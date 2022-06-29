@@ -1,14 +1,14 @@
-@feature-tag @github-tag @parallel:node-1
-Feature: The Github
+@feature-tag @github-tag @parallel:data
+Feature: The Github data
 
   I want to GitHub Things
 
   @tag-to-include
-  Scenario: Opening GitHub
+  Scenario: Opening GitHub data
     Given I open GitHub page
     Then I see "GitHub" in the title
 
   @another-tag-to-include
-  Scenario: Opening GitHub again
+  Scenario: Opening GitHub again data
     Given I open GitHub page
     Then I see "GitHub" in the title

@@ -5,7 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "cypress run --spec \"**/*.feature\"",
-    "test:all": "cypress run --spec \"**/*.features\""
+    "test:all": "cypress run --spec \"**/*.features\"",
+    "cy-test:parallel-data": "./node_modules/.bin/cypress-tags run -b chrome -e TAGS='@parallel:data'",
+    "cy-test:parallel-node-1": "./node_modules/.bin/cypress-tags run -b chrome -e TAGS='@parallel:node-1'",
+    "cy-test:parallel-node-2": "./node_modules/.bin/cypress-tags run -b chrome -e TAGS='@parallel:node-2'",
+    "cy-test:parallel-node-3": "./node_modules/.bin/cypress-tags run -b chrome -e TAGS='@parallel:node-3'",
+    "cy-test:parallel-node-4": "./node_modules/.bin/cypress-tags run -b chrome -e TAGS='@parallel:node-4'"
   },
   "repository": {
     "type": "git",
@@ -23,8 +28,9 @@
   },
   "homepage": "https://github.com/TheBrainFamily/cypress-cucumber-example#readme",
   "dependencies": {
-    "cypress": "^4.9.0",
-    "cypress-cucumber-preprocessor": "^2.5.0"
+    "cypress": "9.3.1",
+    "cypress-cucumber-preprocessor": "^2.5.5",
+    "cypress-tags": "^0.3.0"
   },
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": true

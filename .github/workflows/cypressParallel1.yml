@@ -1,0 +1,80 @@
+name: Cypress tests Parallel updated
+on: push
+
+jobs:
+  cypress-test-data:
+    runs-on: ubuntu-latest
+    # container: cypress/browsers:node12.18.3-chrome87-ff82
+
+    steps:
+      - name: Print current branch
+        run: echo "The workflow has been triggered on ${GITHUB_REF#refs/heads/} branch."
+
+      - name: Checkout code repository
+        uses: actions/checkout@v2
+
+      - uses: actions/cache@v2
+        id: cache-modules
+        with:
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
+          path: |
+            ~/.cache/Cypress
+            **/node_modules
+
+      - name: Install packages for Cypress
+        id: cypress-package-install
+        if: steps.cache-modules.outputs.cache-hit != 'true'
+        run: |
+          npm install
+
+      - name: Create Cypress Test Data
+        id: cypress-data
+        run: |
+          npm run cy-test:data
+
+      - name: Save Cypress screenshot artifacts on failure
+        uses: actions/upload-artifact@v1
+        if: steps.cypress-run.outputs.exit_code == 1
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+
+  cypress-test-1:
+    runs-on: ubuntu-latest
+    # container: cypress/browsers:node12.18.3-chrome87-ff82
+    needs: cypress-test-data
+    strategy:
+      fail-fast: false
+      matrix:
+        ci_node_total: [4]
+        ci_node_index: [1, 2, 3, 4]
+
+    steps:
+      - name: Checkout code repository
+        uses: actions/checkout@v2
+
+      - uses: actions/cache@v2
+        id: cache-modules
+        with:
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
+          path: |
+            ~/.cache/Cypress
+            **/node_modules
+
+      - name: Install packages for Cypress
+        id: cypress-package-install
+        if: steps.cache-modules.outputs.cache-hit != 'true'
+        run: |
+          npm install
+
+      - name: Run Cypress E2E Tests
+        id: cypress-run
+        run: |
+          npm run cy-test:parallel-node-${{matrix.ci_node_index}}
+
+      - name: Save Cypress screenshot artifacts on failure
+        uses: actions/upload-artifact@v1
+        if: steps.cypress-run.outputs.exit_code == 1
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots

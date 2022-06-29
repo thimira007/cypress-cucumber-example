@@ -1,3 +1,4 @@
+@parallel:node-2
 Feature: The Google
 
   I want to open Google page
