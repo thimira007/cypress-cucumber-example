@@ -33,6 +33,7 @@
     "cypress-tags": "^0.3.0"
   },
   "cypress-cucumber-preprocessor": {
-    "nonGlobalStepDefinitions": true
+    "nonGlobalStepDefinitions": false,
+    "stepDefinitions": "cypress/stepsDefinition"
   }
 }
