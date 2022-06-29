@@ -10,7 +10,9 @@
     "cy-test:parallel-node-1": "./node_modules/.bin/cypress-tags run -b chrome -e TAGS='@parallel:node-1'",
     "cy-test:parallel-node-2": "./node_modules/.bin/cypress-tags run -b chrome -e TAGS='@parallel:node-2'",
     "cy-test:parallel-node-3": "./node_modules/.bin/cypress-tags run -b chrome -e TAGS='@parallel:node-3'",
-    "cy-test:parallel-node-4": "./node_modules/.bin/cypress-tags run -b chrome -e TAGS='@parallel:node-4'"
+    "cy-test:parallel-node-4": "./node_modules/.bin/cypress-tags run -b chrome -e TAGS='@parallel:node-4'",
+    "cy-test:parallel-node-5": "./node_modules/.bin/cypress-tags run -b chrome -e TAGS='@parallel:node-5'",
+    "cy-test:parallel-node-6": "./node_modules/.bin/cypress-tags run -b chrome -e TAGS='@parallel:node-6'"
   },
   "repository": {
     "type": "git",
