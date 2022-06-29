@@ -1,4 +1,4 @@
-name: Cypress Parallel Tests
+name: Cypress Parallel Execution
 on: push
 
 jobs:
