@@ -6,7 +6,7 @@
   "scripts": {
     "test": "cypress run --spec \"**/*.feature\"",
     "test:all": "cypress run --spec \"**/*.features\"",
-    "cy-test:parallel-data": "./node_modules/.bin/cypress-tags run -b chrome -e TAGS='@parallel:data'",
+    "cy-test:data": "./node_modules/.bin/cypress-tags run -b chrome -e TAGS='@parallel:data'",
     "cy-test:parallel-node-1": "./node_modules/.bin/cypress-tags run -b chrome -e TAGS='@parallel:node-1'",
     "cy-test:parallel-node-2": "./node_modules/.bin/cypress-tags run -b chrome -e TAGS='@parallel:node-2'",
     "cy-test:parallel-node-3": "./node_modules/.bin/cypress-tags run -b chrome -e TAGS='@parallel:node-3'",
