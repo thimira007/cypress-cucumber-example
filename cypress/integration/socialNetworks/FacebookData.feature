@@ -1,5 +1,5 @@
 @feature-tag @parallel:data
-Feature: The Facebook data file
+Feature: The Facebook-data
 
   I want to open a social network page
 

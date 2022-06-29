@@ -33,8 +33,9 @@ jobs:
           npm run cy-test:data
 
       - name: Save Cypress screenshot artifacts on failure
-        uses: actions/upload-artifact@v1
-        if: steps.cypress-run.outputs.exit_code == 1
+        uses: actions/upload-artifact@v3
+        #if: steps.cypress-data.outputs.exit_code == 1
+        if: failure()
         with:
           name: cypress-screenshots
           path: cypress/screenshots
@@ -73,8 +74,9 @@ jobs:
           npm run cy-test:parallel-node-${{matrix.ci_node_index}}
 
       - name: Save Cypress screenshot artifacts on failure
-        uses: actions/upload-artifact@v1
-        if: steps.cypress-run.outputs.exit_code == 1
+        uses: actions/upload-artifact@v3
+        #if: steps.cypress-run.outputs.exit_code == 1
+        if: failure()
         with:
           name: cypress-screenshots
           path: cypress/screenshots
