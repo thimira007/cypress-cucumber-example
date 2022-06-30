@@ -1,0 +1,43 @@
+name: Cypress Parallel Execution 3
+on: push
+
+jobs:
+  cypress-test:
+    runs-on: ubuntu-latest
+    # container: cypress/browsers:node12.18.3-chrome87-ff82
+    strategy:
+      fail-fast: false
+      matrix:
+        ci_node_total: [6]
+        ci_node_index: [1, 2, 3, 4, 5, 6]
+
+    steps:
+      - name: Checkout code repository
+        uses: actions/checkout@v2
+
+      - uses: actions/cache@v2
+        id: cache-modules
+        with:
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
+          path: |
+            ~/.cache/Cypress
+            **/node_modules
+
+      - name: Install packages for Cypress
+        id: cypress-package-install
+        if: steps.cache-modules.outputs.cache-hit != 'true'
+        run: |
+          npm install
+
+      - name: Run Cypress E2E Tests
+        id: cypress-run
+        run: |
+          npm run cy-test:parallel --env TAGS='@parallel:node-${{matrix.ci_node_index}}'
+
+      - name: Save Cypress screenshot artifacts on failure
+        uses: actions/upload-artifact@v3
+        #if: steps.cypress-run.outputs.exit_code == 1
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
