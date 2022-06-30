@@ -13,7 +13,7 @@
     "cy-test:parallel-node-4": "./node_modules/.bin/cypress-tags run -b chrome -e TAGS='@parallel:node-4'",
     "cy-test:parallel-node-5": "./node_modules/.bin/cypress-tags run -b chrome -e TAGS='@parallel:node-5'",
     "cy-test:parallel-node-6": "./node_modules/.bin/cypress-tags run -b chrome -e TAGS='@parallel:node-6'",
-    "cy-test:parallel": "./node_modules/.bin/cypress-tags run -b chrome -e"
+    "cy-test:parallel": "./node_modules/.bin/cypress-tags run -b chrome --headed -e"
   },
   "repository": {
     "type": "git",
