@@ -33,7 +33,7 @@ jobs:
       - name: Run Cypress E2E Tests
         id: cypress-run
         run: |
-          npm run cy-test:parallel --env=stage TAGS=@smoke,@${{matrix.ci_node_index}}
+          npm run cy-test:parallel --env=stage TAGS='@smoke and @${{matrix.ci_node_index}}'
 
       - name: Save Cypress screenshot artifacts on failure
         uses: actions/upload-artifact@v3
