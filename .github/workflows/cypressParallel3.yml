@@ -32,7 +32,7 @@ jobs:
       - name: Run Cypress E2E Tests
         id: cypress-run
         run: |
-           index="1" npm run cy-test:parallel 
+          npm run cy-test:parallel --index="1"
 
       - name: Save Cypress screenshot artifacts on failure
         uses: actions/upload-artifact@v3
