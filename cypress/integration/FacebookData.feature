@@ -1,4 +1,4 @@
-@feature-tag @parallel:data
+@smoke @feature-tag @parallel:data @parallel-2
 Feature: The Facebook-data
 
   I want to open a social network page

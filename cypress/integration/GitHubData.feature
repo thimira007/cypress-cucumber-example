@@ -1,4 +1,4 @@
-@feature-tag @github-tag @parallel:data
+@feature-tag @github-tag @parallel:data @parallel-4
 Feature: The Github data
 
   I want to GitHub Things

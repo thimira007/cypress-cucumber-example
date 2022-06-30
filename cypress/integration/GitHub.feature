@@ -1,4 +1,4 @@
-@feature-tag @github-tag @parallel:node-1
+@smoke @feature-tag @github-tag @parallel:node-1 @parallel-3
 Feature: The Github
 
   I want to GitHub Things

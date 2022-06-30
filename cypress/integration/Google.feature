@@ -1,4 +1,4 @@
-@parallel:node-2
+@smoke @parallel:node-2 @parallel-5
 Feature: The Google
 
   I want to open Google page

@@ -1,4 +1,4 @@
-@feature-tag @parallel:node-1
+@smoke @feature-tag @parallel:node-1 @parallel-1
 Feature: The Facebook
 
   I want to open a social network page
