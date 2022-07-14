@@ -7,12 +7,12 @@
     "test": "cypress run --spec \"**/*.feature\"",
     "test:all": "cypress run --spec \"**/*.features\"",
     "cy-test:data": "./node_modules/.bin/cypress-tags run -b chrome -e TAGS='@parallel:data'",
-    "cy-test:parallel-node-1": "./node_modules/.bin/cypress-tags run -b chrome -e TAGS='@parallel:node-1' --env allure=true,allureResultsPath=cypress/allure-results",
-    "cy-test:parallel-node-2": "./node_modules/.bin/cypress-tags run -b chrome -e TAGS='@parallel:node-2' --env allure=true,allureResultsPath=cypress/allure-results",
-    "cy-test:parallel-node-3": "./node_modules/.bin/cypress-tags run -b chrome -e TAGS='@parallel:node-3' --env allure=true,allureResultsPath=cypress/allure-results",
-    "cy-test:parallel-node-4": "./node_modules/.bin/cypress-tags run -b chrome -e TAGS='@parallel:node-4' --env allure=true,allureResultsPath=cypress/allure-results",
-    "cy-test:parallel-node-5": "./node_modules/.bin/cypress-tags run -b chrome -e TAGS='@parallel:node-5' --env allure=true,allureResultsPath=cypress/allure-results",
-    "cy-test:parallel-node-6": "./node_modules/.bin/cypress-tags run -b chrome -e TAGS='@parallel:node-6' --env allure=true,allureResultsPath=cypress/allure-results",
+    "cy-test:parallel-node-1": "./node_modules/.bin/cypress-tags run -b chrome -e TAGS='@parallel-1' --env allure=true,allureResultsPath=cypress/allure-results",
+    "cy-test:parallel-node-2": "./node_modules/.bin/cypress-tags run -b chrome -e TAGS='@parallel-2' --env allure=true,allureResultsPath=cypress/allure-results",
+    "cy-test:parallel-node-3": "./node_modules/.bin/cypress-tags run -b chrome -e TAGS='@parallel-3' --env allure=true,allureResultsPath=cypress/allure-results",
+    "cy-test:parallel-node-4": "./node_modules/.bin/cypress-tags run -b chrome -e TAGS='@parallel-4' --env allure=true,allureResultsPath=cypress/allure-results",
+    "cy-test:parallel-node-5": "./node_modules/.bin/cypress-tags run -b chrome -e TAGS='@parallel-5' --env allure=true,allureResultsPath=cypress/allure-results",
+    "cy-test:parallel-node-6": "./node_modules/.bin/cypress-tags run -b chrome -e TAGS='@parallel-6' --env allure=true,allureResultsPath=cypress/allure-results",
     "cy-test:parallel": "./node_modules/.bin/cypress-tags run -b chrome --headed -e --env envFile=${npm_config_env}"
   },
   "repository": {
