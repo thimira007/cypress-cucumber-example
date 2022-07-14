@@ -1,5 +1,6 @@
 name: Cypress Parallel Execution 3
-on: push
+on: 
+  workflow_dispatch:
 
 jobs:
   cypress-test:
@@ -12,6 +13,9 @@ jobs:
         ci_node_index: [1, 2, 3, 4, 5, 6]
 
     steps:
+      - name: Print current branch
+        run: echo "The workflow has been triggered on ${GITHUB_REF#refs/heads/} branch."
+
       - name: Checkout code repository
         uses: actions/checkout@v2
 
@@ -35,9 +39,9 @@ jobs:
           npm run cy-test:parallel TAGS=@parallel:node-${{matrix.ci_node_index}}
 
       - name: Save Cypress screenshot artifacts on failure
-        uses: actions/upload-artifact@v3
-        #if: steps.cypress-run.outputs.exit_code == 1
-        if: failure()
+        uses: actions/upload-artifact@v1
+        if: steps.cypress-run.outputs.exit_code == 1
+        # if: failure()
         with:
           name: cypress-screenshots
           path: cypress/screenshots
