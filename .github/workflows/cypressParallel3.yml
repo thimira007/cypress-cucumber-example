@@ -40,7 +40,7 @@ jobs:
 
       - name: Save Cypress screenshot artifacts on failure
         uses: actions/upload-artifact@v1
-        if: failure() && steps.cypress-run.outputs.exitcode == 1
+        if: failure() && steps.cypress-run.outputs.exit == 1
         # if: failure()
         with:
           name: cypress-screenshots
