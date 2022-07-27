@@ -42,6 +42,7 @@ jobs:
         uses: actions/upload-artifact@v1
         # if: steps.cypress-run.outputs.exit_code == 1
         if: failure()
+        continue-on-error: true
         with:
           name: cypress-screenshots
           path: cypress/screenshots
@@ -60,41 +61,44 @@ jobs:
         continue-on-error: true
         with:
           name: json-files
-          path: cypress/cucumber-json
+          path: |
+            cypress/cucumber-json
+            cypress/cucumber-html-report.js
           
   generate-report:
     runs-on: ubuntu-latest
-    # container: cypress/browsers:node12.18.3-chrome87-ff82
     needs: cypress-test
     if: always()
 
     steps:
-      - name: Checkout code repository
-        uses: actions/checkout@v2
+#       - name: Checkout code repository
+#         uses: actions/checkout@v2
         
-      - uses: actions/cache@v2
-        id: cache-modules
-        with:
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
-          path: |
-            ~/.cache/Cypress
-            **/node_modules
+#       - uses: actions/cache@v2
+#         id: cache-modules
+#         with:
+#           key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
+#           path: |
+#             ~/.cache/Cypress
+#             **/node_modules
 
-      - name: Install packages for Cypress
-        id: cypress-package-install
-        if: steps.cache-modules.outputs.cache-hit != 'true'
-        run: |
-          npm install
+#       - name: Install packages for Cypress
+#         id: cypress-package-install
+#         if: steps.cache-modules.outputs.cache-hit != 'true'
+#         run: |
+#           npm install
       
       - name: Download json files
         uses: actions/download-artifact@v3
         with:
           name: json-files
-          path: cypress/cucumber-json
+#           path: cypress/cucumber-json
+          path: cypress
 
       - name: Generate test reports
         id: generate-reports
         run: |
+          npm install multiple-cucumber-html-reporter
           node cypress/cucumber-html-report.js
 
       - name: Save test report
