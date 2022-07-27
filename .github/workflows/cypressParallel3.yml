@@ -69,6 +69,15 @@ jobs:
     if: always()
 
     steps:
+      - name: Checkout code repository
+        uses: actions/checkout@v2
+      
+      - name: Download json files
+        uses: actions/download-artifact@v3
+        with:
+          name: json-files
+          path: cypress/cucumber-json
+
       - name: Generate test reports
         id: generate-reports
         run: |
@@ -81,11 +90,3 @@ jobs:
         with:
           name: html-report
           path: cypress/reports
-      
-      - name: Save test results 2
-        uses: actions/upload-artifact@v1
-        if: always()
-        continue-on-error: true
-        with:
-          name: allure-results 2
-          path: cypress/allure-results
