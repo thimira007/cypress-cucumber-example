@@ -72,13 +72,12 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: json-test-results
-          path: cypress
 
       - name: Generate html test reports
         id: generate-reports
         run: |
           npm install multiple-cucumber-html-reporter
-          node cypress/cucumber-html-report.js
+          node cucumber-html-report.js
 
       - name: Save test report
         uses: actions/upload-artifact@v1
@@ -86,4 +85,4 @@ jobs:
         continue-on-error: true
         with:
           name: html-report
-          path: cypress/html-report
+          path: html-report
