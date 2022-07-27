@@ -33,15 +33,14 @@
   "dependencies": {
     "cypress": "9.3.1",
     "cypress-cucumber-preprocessor": "^2.5.5",
-    "cypress-tags": "^0.3.0",
-    "multiple-cucumber-html-reporter": "^1.21.4"
+    "cypress-tags": "^0.3.0"
   },
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": false,
     "stepDefinitions": "cypress/stepsDefinition",
     "cucumberJson": {
       "generate": true,
-      "outputFolder": "cypress/cucumber-json",
+      "outputFolder": "cypress/reports/cucumber-json",
       "filePrefix": "",
       "fileSuffix": ".cucumber"
     }

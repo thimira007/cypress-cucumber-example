@@ -62,8 +62,8 @@ typings/
 
 cypress/videos
 cypress/screenshots
-/cypress/cucumber-json
-/cypress/reports
+/cypress/reports/cucumber-json
+/cypress/reports/html-report
 
 allure-report/
 allure-results/

@@ -59,12 +59,25 @@ jobs:
         if: always()
         continue-on-error: true
         with:
-          name: json-files
-          path: cypress/cucumber-json
+          name: json-test-results
+          path: cypress/reports
           
-      - name: Generate test reports
+  generate-report:
+    runs-on: ubuntu-latest
+    needs: cypress-test
+    if: always()
+
+    steps:
+      - name: Download json files
+        uses: actions/download-artifact@v3
+        with:
+          name: json-test-results
+          path: cypress
+
+      - name: Generate html test reports
         id: generate-reports
         run: |
+          npm install multiple-cucumber-html-reporter
           node cypress/cucumber-html-report.js
 
       - name: Save test report
@@ -73,5 +86,4 @@ jobs:
         continue-on-error: true
         with:
           name: html-report
-          path: cypress/reports
-          
+          path: cypress/html-report
