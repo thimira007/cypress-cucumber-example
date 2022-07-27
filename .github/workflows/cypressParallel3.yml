@@ -54,7 +54,6 @@ jobs:
           name: allure-results
           path: cypress/allure-results
 
-jobs:
   generate-report:
     runs-on: ubuntu-latest
     # container: cypress/browsers:node12.18.3-chrome87-ff82
