@@ -60,7 +60,7 @@ jobs:
     # container: cypress/browsers:node12.18.3-chrome87-ff82
     needs: cypress-test
 
-     steps:
+    steps:
       - name: Generate test reports
         id: generate reports
         run: |
