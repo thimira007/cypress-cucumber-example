@@ -62,36 +62,6 @@ jobs:
           name: json-files
           path: cypress/cucumber-json
           
-  generate-report:
-    runs-on: ubuntu-latest
-    # container: cypress/browsers:node12.18.3-chrome87-ff82
-    needs: cypress-test
-    if: always()
-
-    steps:
-      - name: Checkout code repository
-        uses: actions/checkout@v2
-        
-      - uses: actions/cache@v2
-        id: cache-modules
-        with:
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
-          path: |
-            ~/.cache/Cypress
-            **/node_modules
-
-      - name: Install packages for Cypress
-        id: cypress-package-install
-        if: steps.cache-modules.outputs.cache-hit != 'true'
-        run: |
-          npm install
-      
-      - name: Download json files
-        uses: actions/download-artifact@v3
-        with:
-          name: json-files
-          path: cypress/cucumber-json
-
       - name: Generate test reports
         id: generate-reports
         run: |
@@ -104,3 +74,4 @@ jobs:
         with:
           name: html-report
           path: cypress/reports
+          
