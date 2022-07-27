@@ -71,6 +71,20 @@ jobs:
     steps:
       - name: Checkout code repository
         uses: actions/checkout@v2
+        
+      - uses: actions/cache@v2
+        id: cache-modules
+        with:
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
+          path: |
+            ~/.cache/Cypress
+            **/node_modules
+
+      - name: Install packages for Cypress
+        id: cypress-package-install
+        if: steps.cache-modules.outputs.cache-hit != 'true'
+        run: |
+          npm install
       
       - name: Download json files
         uses: actions/download-artifact@v3
