@@ -53,3 +53,22 @@ jobs:
         with:
           name: allure-results
           path: cypress/allure-results
+
+jobs:
+  generate-report:
+    runs-on: ubuntu-latest
+    # container: cypress/browsers:node12.18.3-chrome87-ff82
+    needs: cypress-test
+
+      - name: Generate test reports
+        id: generate reports
+        run: |
+          node cypress/cucumber-html-report.js
+
+      - name: Save test report
+        uses: actions/upload-artifact@v1
+        if: always()
+        continue-on-error: true
+        with:
+          name: html-report
+          path: cypress/reports
