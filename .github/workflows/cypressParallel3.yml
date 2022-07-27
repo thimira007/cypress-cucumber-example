@@ -53,7 +53,15 @@ jobs:
         with:
           name: allure-results
           path: cypress/allure-results
-
+      
+      - name: Save json test results
+        uses: actions/upload-artifact@v1
+        if: always()
+        continue-on-error: true
+        with:
+          name: json-files
+          path: cypress/cucumber-json
+          
   generate-report:
     runs-on: ubuntu-latest
     # container: cypress/browsers:node12.18.3-chrome87-ff82
@@ -73,3 +81,11 @@ jobs:
         with:
           name: html-report
           path: cypress/reports
+      
+      - name: Save test results 2
+        uses: actions/upload-artifact@v1
+        if: always()
+        continue-on-error: true
+        with:
+          name: allure-results 2
+          path: cypress/allure-results
