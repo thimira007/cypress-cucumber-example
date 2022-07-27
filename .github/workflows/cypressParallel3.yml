@@ -78,7 +78,7 @@ jobs:
         id: generate-reports
         run: |
           npm install multiple-cucumber-html-reporter
-          node cypress/reports/cucumber-html-report.js
+          node cypress/cucumber-html-report.js
 
       - name: Save test report
         uses: actions/upload-artifact@v1
@@ -86,4 +86,4 @@ jobs:
         continue-on-error: true
         with:
           name: html-report
-          path: cypress/reports/html-report
+          path: cypress/html-report
