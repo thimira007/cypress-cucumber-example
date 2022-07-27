@@ -61,7 +61,7 @@ jobs:
 
     steps:
       - name: Generate test reports
-        id: generate reports
+        id: generate-reports
         run: |
           node cypress/cucumber-html-report.js
 
