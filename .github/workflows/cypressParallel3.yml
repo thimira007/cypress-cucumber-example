@@ -73,7 +73,7 @@ jobs:
           
   generate-report:
     runs-on: ubuntu-latest
-    needs: cypress-test
+    needs: post-execution
     if: always()
 
     steps:
