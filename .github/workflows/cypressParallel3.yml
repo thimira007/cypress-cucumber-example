@@ -62,6 +62,11 @@ jobs:
           name: json-test-results
           path: cypress/reports
           
+  post-execution:
+    runs-on: ubuntu-latest
+    needs: cypress-test
+    if: always() && (needs.cypress-test.result != 'failure')
+          
   generate-report:
     runs-on: ubuntu-latest
     needs: cypress-test
