@@ -65,7 +65,7 @@ jobs:
   post-execution:
     runs-on: ubuntu-latest
     needs: cypress-test
-    if: always() && (needs.cypress-test.result != 'failure')
+    if: always() && (needs.cypress-test.result != 'success')
     
     steps:
       - name: Print current branch
