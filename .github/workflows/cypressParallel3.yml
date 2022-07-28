@@ -74,7 +74,7 @@ jobs:
   generate-report:
     runs-on: ubuntu-latest
     needs: post-execution
-    if: always()
+    if: always() && (needs.cypress-test.result != 'skipped')
 
     steps:
       - name: Download json files
